@@ -1,17 +1,35 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Image, TouchableOpacity, Alert,TextInput } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const handlePress = () => Alert.alert('Button Pressed', 'You pressed the button!');
 
+  const [searchQuery, setSearchQuery] = useState('');
 
+  const handleSearch = () => {
+    console.log('Search for:', searchQuery);
+    // Here you would typically make an API call with the search query
+  };
   
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={styles.header}>
         <Text style={styles.headerText}>MTA App</Text>
+      </View>
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search..."
+          placeholderTextColor="#999"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          onSubmitEditing={handleSearch}
+        />
+        <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
+          <Text style={styles.searchButtonText}>Go</Text>
+        </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Look At The Map</Text>
@@ -48,11 +66,7 @@ const styles = StyleSheet.create({
 
 
   },
-  logo: {
-    width: 150,
-    height: 150,
-    alignSelf: 'center',
-  },
+
   button: {
     marginTop: 30,
     backgroundColor: 'rgb(40, 95, 165)',
@@ -69,4 +83,33 @@ const styles = StyleSheet.create({
   fontSize: 18,
   textAlign: 'center', // Add this line to ensure text is centered horizontally
 },
+searchContainer: {
+  flexDirection: 'row',
+  paddingTop: 10,
+  paddingHorizontal: 10,
+  paddingBottom: 10,
+  backgroundColor: 'rgb(40, 95, 165)', // or another color that fits your design
+},
+searchInput: {
+  flex: 1,
+  height: 40,
+  backgroundColor: '#fff',
+  paddingHorizontal: 10,
+  borderRadius: 5,
+},
+searchButton: {
+  backgroundColor: '#fff',
+  borderRadius: 5,
+  marginLeft: 10,
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: 10,
+},
+searchButtonText: {
+  color: 'rgb(40, 95, 165)',
+  fontSize: 16,
+  fontWeight: 'bold',
+
+},
+
 });
