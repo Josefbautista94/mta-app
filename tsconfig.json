@@ -1,6 +1,12 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    // other options...
+    "typeRoots": ["./types", "./node_modules/@types"]
+  },
+  "include": [
+    "./env.d.ts",
+    // ... any other files or directories you want to include for TypeScript to compile
+  ],
+  // ... any other config settings
 }
