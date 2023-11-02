@@ -11,12 +11,16 @@ export default function App() {
       <View style={styles.header}>
         <Text style={styles.headerText}>MTA App</Text>
       </View>
-      <Image
-        style={styles.logo}
-      />
       <TouchableOpacity style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>Press Me</Text>
+        <Text style={styles.buttonText}>Look At The Map</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}>Look At Your Current Schedules </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}>Add  More Train Schedules </Text>
+      </TouchableOpacity>
+   
     </View>
   );
 }
