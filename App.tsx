@@ -32,13 +32,20 @@ export default function App() {
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>Look At The Map</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Look At Your Current Schedules </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>Add  More Train Schedules </Text>
+        <Text style={styles.buttonText}>Look At The Map</Text>
+      </TouchableOpacity>
+    
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}> Trains With Isues </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}>Add Train Schedules </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}>Remove Train Schedules </Text>
       </TouchableOpacity>
    
     </View>
