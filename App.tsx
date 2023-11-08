@@ -84,7 +84,7 @@ export default function App() {
         )}
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handlePress}>
+      {/* <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Look At Your Current Schedules </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handlePress}>
@@ -96,10 +96,11 @@ export default function App() {
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Add Train Schedules </Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={handlePress}>
+      </TouchableOpacity> */}
+      {/* <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Remove Train Schedules </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+      
       <TouchableOpacity style={styles.button} onPress={fetchRealTimeData}>
         <Text style={styles.buttonText}>Fetch Real Time Data</Text>
       </TouchableOpacity>
