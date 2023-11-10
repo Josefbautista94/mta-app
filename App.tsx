@@ -17,6 +17,25 @@ import { MTA_API_KEY } from "@env"; // Ensure you have installed and configured 
 import { ScrollView } from "react-native";
 
 const API_ENDPOINT = `https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-ace`;
+const formatTripId = (tripId) => {
+  const parts = tripId.split(/[_\.]+/);
+  // Assuming the format is Time_Line_Direction
+  const timePart = parts[0];
+  const linePart = parts[1];
+  const directionPart = parts[2];
+
+  const time = `${timePart.substring(0, 2)}:${timePart.substring(2, 4)}`;
+  const timeFormatted = new Date(`1970-01-01T${time}:00Z`).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true
+  });
+
+  const directionMap = { 'N': 'Northbound', 'S': 'Southbound' };
+  const directionFormatted = directionMap[directionPart] || directionPart;
+
+  return `${timeFormatted} - Line ${linePart} ${directionFormatted}`;
+};
 
 export default function App() {
   const handlePress = () =>
@@ -50,15 +69,15 @@ export default function App() {
   };
   const renderRealTimeData = () => {
     if (realTimeData && realTimeData.entity) {
-      // Using slice to get only the first 5 entities
       return realTimeData.entity
         .slice(0, 6)
         .map((entity, index) => {
           if (entity.tripUpdate && entity.tripUpdate.trip) {
+            const formattedId = formatTripId(entity.tripUpdate.trip.tripId);
             return (
               <View key={index} style={styles.dataItem}>
                 <Text style={styles.dataText}>
-                  {`Trip ID: ${entity.tripUpdate.trip.tripId}`}
+                  {`Trip ID: ${formattedId}`}
                 </Text>
               </View>
             );
@@ -69,6 +88,7 @@ export default function App() {
     }
     return <Text>No data available.</Text>;
   };
+
 
   return (
     <View style={styles.container}>
