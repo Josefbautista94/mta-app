@@ -67,27 +67,27 @@ export default function App() {
         setRealTimeData(null); // Reset the state if there's an error
       });
   };
-  const renderRealTimeData = () => {
-    if (realTimeData && realTimeData.entity) {
-      return realTimeData.entity
-        .slice(0, 6)
-        .map((entity, index) => {
-          if (entity.tripUpdate && entity.tripUpdate.trip) {
-            const formattedId = formatTripId(entity.tripUpdate.trip.tripId);
-            return (
-              <View key={index} style={styles.dataItem}>
-                <Text style={styles.dataText}>
-                  {`Trip ID: ${formattedId}`}
-                </Text>
-              </View>
-            );
-          }
-          return null;
-        })
-        .filter((component) => component !== null);
-    }
-    return <Text>No data available.</Text>;
-  };
+const renderRealTimeData = () => {
+  if (realTimeData && realTimeData.entity) {
+    return realTimeData.entity
+      .map((entity, index) => {
+        if (entity.tripUpdate && entity.tripUpdate.trip) {
+          const formattedId = formatTripId(entity.tripUpdate.trip.tripId);
+          return (
+            <View key={index} style={styles.dataItem}>
+              <Text style={styles.dataText}>
+                {`Trip ID: ${formattedId}`}
+              </Text>
+            </View>
+          );
+        }
+        return null;
+      })
+      .filter((component) => component !== null);
+  }
+  return <Text>No data available.</Text>;
+};
+
 
 
   return (
